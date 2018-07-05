@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Portofolio</title>
+		<link rel="stylesheet" type="text/css" href="../css/demo.css"/>
+		<script src="../js/index.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	</head>
+	<body>
+		http://jsfiddle.net/gUWdJ/3/
+		<div class="wrapper-body">
+			<div class="wrap-nav-content">
+				<div class="wrap-navigation">
+					<div class="navigation">
+						<nav class="nav" id="nav">
+							<ul>
+								<li><a href="#" data-scroll="section1-page-content" class="">Link1</a></li>
+								<li><a href="#" data-scroll="section2-page-content">Link2</a></li>
+								<li><a href="#" data-scroll="section3-page-content">Link3</a></li>
+								<li><a href="#" data-scroll="contact-page-content">Link1</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+				<div class="wrap-content">
+					<div class="content">
+						<div id="section1-page-content" name="section1-page-content">
+							<img src="../images/profile.png" />
+							<h2>Header 1</h2>
+							<p>This is section1 content. This is section1 content. This is section1 content. This is section1 content. This s section1 content. This is section1 content. This is section1 content. This is section1 content.</p>
+						</div>
+						<div id="section2-page-content" data-anchor="section2-page-content" name="section2-page-content">
+							
+							<h2>Header 2</h2>
+							<p>This is section22 content. This is section22 content. This is section22 content. This is section22 content. This is section22 content. This is section22 content. This is section22 content. This is section22 content. This is section22 content. This is section22 content. This is section22 content. This is section22 content.ntent. This is section22 content. This is section22 content. This is section22 content. This is section22 content. This is section22 content. This is section22 content. This is section22 content.</p>
+						</div>
+						<div id="section3-page-content" data-anchor="section3-page-content">
+							<h2>Header 3</h2>
+							<p>This is section3333 content. This is section3333 content. This is section3333 content. This is section3333 content. This is section3333 content. This is section3333 content. This is section3333 content. This is section3333 content. This is section3333 content. This is secti is section3333 content. This is section3333 content.</p>
+						</div>
+						<div id="contact-page-content" data-anchor="contact-page-content">
+							<h2>Contact </h2>
+							<p><span>Email : </span> abc@gmail.com</p>
+							<p><span>Facebook: </span> www.facebook.com</p>
+							<p><span>Phone: </span> 9164498340</p>
+							<p><span>Adress: </span>Abc</p>
+							<form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+								<table>
+									<tr>
+										<td>Name:</td>
+										<td><input type="text" name="name" required placeholder="First Name"></td>
+									</tr>
+									<tr>
+										<td>Telephone:</td>
+										<td><input type="tel" name="usrtel" required placeholder="Phone Number"/></td>
+									</tr>
+									<tr>
+										<td>Email Address:</td>
+										<td><input type="email" name="email" required placeholder="Email address" /></td>
+									</tr>
+									<tr>
+										<td>Gender:</td>
+										<td><label class="container">
+										  <input type="radio" checked="checked" name="radio"/>One
+										  <span class="checkmark"></span>
+										</label>
+										<label class="container">
+										  <input type="radio" name="radio"/>Two
+										  <span class="checkmark"></span>
+										</label></td>
+									</tr>
+									<tr>
+										<td>Comment:</td>
+										<td><input type="textarea" required placeholder="Description"/></td>
+									</tr>
+									<tr>
+										<td><input type="submit" value="Submit"/></td>
+										<td></td>
+									</tr>
+								</table>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+		<script>
+			// $(document).ready(function(){	
+			//    		$("body div").mouseenter(function(){
+			//    		var id = $(this).attr('id');
+			//    		$("a").removeClass('active');
+			//    		$("[href=#"+id+"]").addClass('active');
+			// });
+			  
+			// });
+
+			$('nav ul li a').on('click', function() {
+
+			    var scrollAnchor = $(this).attr('data-scroll'),
+			        scrollPoint = $('div[data-anchor="' + scrollAnchor + '"]').offset().top;
+
+			    $('body,html').animate({
+			        scrollTop: scrollPoint
+			    }, 500);
+
+			    return false;
+
+			});
+
+
+			$(window).scroll(function() {
+			    var windscroll = $(window).scrollTop();
+			    if (windscroll >= 10) {
+			        
+			        $('.wrap-content div').each(function(i) {
+			            if ($(this).position().top <= windscroll - 50  ) {
+			                $('nav ul li  a.active').removeClass('active');
+			                $('nav ul li a').eq(i).addClass('active');
+			            }
+			        });
+
+			    } else {
+			        
+			        $('nav ul li a.active').removeClass('active');
+			        $('nav ul li a:first').addClass('active');
+			    }
+
+			}).scroll();
+		</script>
+	</body>
+
+</html>
